@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jego", "Jego\Jego.csproj", "{C19DF2BF-B9E7-4E6C-A83E-79CCDF71F1A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelTemplateLib", "ExcelTemplateLib\ExcelTemplateLib.csproj", "{AEC2AB27-911F-4805-9912-5D4B88CB7568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelModelLib", "ExcelModelLib\ExcelModelLib.csproj", "{76FAE0F7-B24B-4965-98AB-8FBF48A5EC41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JegoDatabase", "JegoDatabase\JegoDatabase.csproj", "{EBE66B90-037F-4562-941B-1B1E36170BEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JegoTestModule", "JegoTestModule\JegoTestModule.csproj", "{F8E982B0-8947-44C8-824C-EE4BB886C390}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dragonz.actb", "dragonz.actb\dragonz.actb.csproj", "{89BC47C7-F14D-46C5-8B9B-0DB90CE2AC42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C19DF2BF-B9E7-4E6C-A83E-79CCDF71F1A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C19DF2BF-B9E7-4E6C-A83E-79CCDF71F1A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C19DF2BF-B9E7-4E6C-A83E-79CCDF71F1A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C19DF2BF-B9E7-4E6C-A83E-79CCDF71F1A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEC2AB27-911F-4805-9912-5D4B88CB7568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEC2AB27-911F-4805-9912-5D4B88CB7568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEC2AB27-911F-4805-9912-5D4B88CB7568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEC2AB27-911F-4805-9912-5D4B88CB7568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76FAE0F7-B24B-4965-98AB-8FBF48A5EC41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76FAE0F7-B24B-4965-98AB-8FBF48A5EC41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76FAE0F7-B24B-4965-98AB-8FBF48A5EC41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76FAE0F7-B24B-4965-98AB-8FBF48A5EC41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBE66B90-037F-4562-941B-1B1E36170BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBE66B90-037F-4562-941B-1B1E36170BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBE66B90-037F-4562-941B-1B1E36170BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBE66B90-037F-4562-941B-1B1E36170BEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8E982B0-8947-44C8-824C-EE4BB886C390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8E982B0-8947-44C8-824C-EE4BB886C390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8E982B0-8947-44C8-824C-EE4BB886C390}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8E982B0-8947-44C8-824C-EE4BB886C390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BC47C7-F14D-46C5-8B9B-0DB90CE2AC42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BC47C7-F14D-46C5-8B9B-0DB90CE2AC42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BC47C7-F14D-46C5-8B9B-0DB90CE2AC42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BC47C7-F14D-46C5-8B9B-0DB90CE2AC42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JegoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BuyTrn">
+    <Key>
+      <PropertyRef Name="trn_idx" />
+    </Key>
+    <Property Name="trn_idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="f_code" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="amount" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
+    <Property Name="total_price" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
+    <Property Name="deadline" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="f_code" />
+    </Key>
+    <Property Name="f_code" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="unit_pirce" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
+    <Property Name="desc" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="type" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="unit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="his_idx" />
+    </Key>
+    <Property Name="his_idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="trn_idx" Type="Int64" Nullable="false" />
+    <Property Name="trn_type" Type="Int64" Nullable="false" />
+    <Property Name="update_date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UseTrn">
+    <Key>
+      <PropertyRef Name="trn_idx" />
+    </Key>
+    <Property Name="trn_idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="f_code" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="amount" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
+    <Property Name="total_price" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
+    <Property Name="deadline" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="JegoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BuyTrn" EntityType="Self.BuyTrn" />
+    <EntitySet Name="Food" EntityType="Self.Food" />
+    <EntitySet Name="History" EntityType="Self.History" />
+    <EntitySet Name="UseTrn" EntityType="Self.UseTrn" />
+    <EntitySet Name="Remain" EntityType="JegoModel.Remain" />
+  </EntityContainer>
+  <EntityType Name="Remain">
+    <Key>
+      <PropertyRef Name="fh_code" />
+    </Key>
+    <Property Name="fh_code" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="f_code" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="date" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="amount" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
+    <Property Name="deadline" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="deadline_date" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+    <Property Name="remain_amount" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
+  </EntityType>
+</Schema>

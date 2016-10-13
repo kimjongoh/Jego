@@ -1,0 +1,37 @@
+﻿<Fluent:RibbonWindow x:Class="Jego.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+        Title="MainWindow" Height="350" Width="525">
+    
+    <DockPanel>
+        <Fluent:Ribbon DockPanel.Dock="Top">
+            <Fluent:Ribbon.Menu>
+                <Fluent:Backstage Header="File"/>
+            </Fluent:Ribbon.Menu>
+
+            <Fluent:RibbonTabItem Header="입 출고 관리" ReduceOrder="(category),(list),(save),(excel)">
+                <Fluent:RibbonGroupBox Header="카테고리" Name="category">
+                    <Fluent:Button LargeIcon="/Jego;component/Images/Fluent/list.png" Header="카테고리" Click="category_button_Click"/>
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="품목관리" Name="list">
+                    <Fluent:Button LargeIcon="/Jego;component/Images/Fluent/list_add.png" Header="품목추가"/>
+                    <Fluent:Button LargeIcon="/Jego;component/Images/Fluent/list_remove.png" Header="품목제거"/>
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="저장" Name="save">
+                    <Fluent:Button LargeIcon="/Jego;component/Images/Fluent/save.png" Header="저장" Click="Save_Click"/>
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="엑셀 내보내기" Name="excel">
+                    <Fluent:Button LargeIcon="/Jego;component/Images/Fluent/excel.png" Header="재고 및 불출대장" Click="ExcelTodayButton_Click"/>
+                    <Fluent:Button LargeIcon="/Jego;component/Images/Fluent/excel_odd.png" Header="불출대장" Click="ExcelTodaySimpleButton_Click"/>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+        </Fluent:Ribbon>
+        <Frame Name="mainPage_Frame"/>
+    </DockPanel>
+        
+        
+    
+    
+    
+</Fluent:RibbonWindow>

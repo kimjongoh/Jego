@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="Jego.Controls.MainPages.InputOutputControls.InputOutputHeader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Unloaded="UserControl_Unloaded">
+    <Grid Margin="10,5">
+        <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Name="category_stackPanel" Orientation="Horizontal">
+                    
+                </StackPanel>
+                <Button Name="addType_button" Width="90" Height="30" Margin="10,0,0,0" Content="카테고리 추가" Click="addType_button_Click"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

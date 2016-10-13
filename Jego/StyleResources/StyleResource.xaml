@@ -1,0 +1,100 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="mainStringSolidBrush" Color="{DynamicResource mainStrongBlack}"/>
+    <SolidColorBrush x:Key="borderSolidBrush" Color="{DynamicResource lineColor}"/>
+    <SolidColorBrush x:Key="frameHeaderColorSolidBrush" Color="{DynamicResource frame_header_color}"/>
+    <SolidColorBrush x:Key="transparentSolidBrush" Color="{DynamicResource transparentColor}"/>
+    <SolidColorBrush x:Key="gridHoverSolidBrush" Color="{DynamicResource gridButtonHoverColor}"/>
+    <SolidColorBrush x:Key="topNavigationHeaderSolidBrush" Color="{DynamicResource topNavigationHeaderColor}"/>
+    <SolidColorBrush x:Key="mainNavigationHeaderSolidBrush" Color="{DynamicResource mainNavigationHeaderColor}"/>
+    <SolidColorBrush x:Key="mainHintSolidBrush" Color="{DynamicResource mainHintColor}"/>
+    <SolidColorBrush x:Key="mainStateHintSolidBrush" Color="{DynamicResource mainHintColor}"/>
+    <SolidColorBrush x:Key="identityOrangeSolidBrush" Color="{DynamicResource identityOrangColor}"/>
+    <SolidColorBrush x:Key="lightLineSolidBrush" Color="{DynamicResource lightLineColor}"/>
+    <SolidColorBrush x:Key="businessDetailSaparateLineSolidBrush" Color="{DynamicResource businessDetailSaparateLineColor}"/>
+    <SolidColorBrush x:Key="whiteSolidBrush" Color="{DynamicResource whiteColor}"/>
+    <SolidColorBrush x:Key="eeeeeeSolidBrush" Color="{DynamicResource EEEEEEColor}"/>
+    <SolidColorBrush x:Key="aaEEEEEESolidBrush" Color="{DynamicResource aaEEEEEEColor}"/>
+    <SolidColorBrush x:Key="profileBackgroundColorSolidBrush" Color="{DynamicResource profile_background_Color}"/>
+    <SolidColorBrush x:Key="blueButtonColorSolidBrush" Color="{DynamicResource blue_button_Color}"/>
+    <SolidColorBrush x:Key="blueButtonHoverColorSolidBrush" Color="{DynamicResource blue_button_Hover_Color}"/>
+    <SolidColorBrush x:Key="orangeButtonColorSolidBrush" Color="{DynamicResource orange_button_Color}"/>
+    <SolidColorBrush x:Key="orangeButtonHoverColorSolidBrush" Color="{DynamicResource orange_button_Hover_Color}"/>
+    <SolidColorBrush x:Key="objectPageLineSolidBrush" Color="{DynamicResource object_Line_Color}"/>
+    
+    
+    <Style x:Key="mainBoldTextBlock15" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource mainStringSolidBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style x:Key="mainTextBlock13" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource mainStringSolidBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+
+    <Style x:Key="mainTextBoxBoldTextBlock15" TargetType="{x:Type TextBox}">
+        <Setter Property="Foreground" Value="{StaticResource mainStringSolidBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+
+    <Style x:Key="mainOrangeBoldTextBlock15" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource identityOrangeSolidBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style x:Key="mainWhiteBoldTextBlock15" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource whiteSolidBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style x:Key="subTextBlock10" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="{StaticResource mainHintSolidBrush}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="10"/>
+    </Style>
+
+    <Style x:Key="graySelectedHighlightListViewStyle" TargetType="{x:Type ListView}">
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource gridButtonHoverColor}" />
+        </Style.Resources>
+    </Style>
+
+
+    
+    
+    
+    
+    
+    <ControlTemplate x:Key="hoverButtonTemplete" TargetType="{x:Type Button}">
+        <Grid HorizontalAlignment="Stretch">
+            <Image Name="icon_image" 
+                               Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Width}"
+                               Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Height}"
+                               Stretch="Fill" HorizontalAlignment="Center" Visibility="Visible"/>
+            <Image Name="icon_image_hover" 
+                               Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Width}"
+                               Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Height}"
+                               Stretch="Fill" HorizontalAlignment="Left" Visibility="Collapsed"/>
+        </Grid>
+
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver"  Value="true">
+                <Setter TargetName="icon_image" Property="Visibility" Value="Collapsed" />
+                <Setter TargetName="icon_image_hover" Property="Visibility" Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+</ResourceDictionary>

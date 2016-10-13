@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:core="clr-namespace:System;assembly=mscorlib">
+
+    <core:Double x:Key="foodName_InputOutput_width">80</core:Double>
+    <core:Double x:Key="foodPrice_InputOutput_width">80</core:Double>
+    <core:Double x:Key="foodDesc_InputOutput_width">80</core:Double>
+    <core:Double x:Key="foodUnit_InputOutput_width">45</core:Double>
+
+    <core:Double x:Key="foodAmount_InputOutput_width">80</core:Double>
+    <core:Double x:Key="foodTotalPrice_InputOutput_width">80</core:Double>
+    <core:Double x:Key="foodDeadLine_InputOutput_width">65</core:Double>
+
+</ResourceDictionary>

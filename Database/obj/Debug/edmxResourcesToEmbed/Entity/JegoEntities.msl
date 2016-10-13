@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="JegoModelStoreContainer" CdmEntityContainer="JegoEntities">
+    <EntitySetMapping Name="BuyTrn">
+      <EntityTypeMapping TypeName="JegoModel.BuyTrn">
+        <MappingFragment StoreEntitySet="BuyTrn">
+          <ScalarProperty Name="trn_idx" ColumnName="trn_idx" />
+          <ScalarProperty Name="f_code" ColumnName="f_code" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="deadline" ColumnName="deadline" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Food">
+      <EntityTypeMapping TypeName="JegoModel.Food">
+        <MappingFragment StoreEntitySet="Food">
+          <ScalarProperty Name="f_code" ColumnName="f_code" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="unit_pirce" ColumnName="unit_pirce" />
+          <ScalarProperty Name="desc" ColumnName="desc" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="History">
+      <EntityTypeMapping TypeName="JegoModel.History">
+        <MappingFragment StoreEntitySet="History">
+          <ScalarProperty Name="his_idx" ColumnName="his_idx" />
+          <ScalarProperty Name="trn_idx" ColumnName="trn_idx" />
+          <ScalarProperty Name="trn_type" ColumnName="trn_type" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UseTrn">
+      <EntityTypeMapping TypeName="JegoModel.UseTrn">
+        <MappingFragment StoreEntitySet="UseTrn">
+          <ScalarProperty Name="trn_idx" ColumnName="trn_idx" />
+          <ScalarProperty Name="f_code" ColumnName="f_code" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="deadline" ColumnName="deadline" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

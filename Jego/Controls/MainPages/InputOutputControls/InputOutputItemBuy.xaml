@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Jego.Controls.MainPages.InputOutputControls.InputOutputItemBuy"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:this="clr-namespace:Jego.Controls.MainPages.InputOutputControls"
+             xmlns:command="clr-namespace:Jego.Commands"
+             x:Name="thisControl"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <command:NewFoodCommand x:Key="newFoodCommand"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            
+        </Grid.ColumnDefinitions>
+
+        <TextBox Grid.Column="0" Name="amount_TextBox" Width="{StaticResource foodAmount_InputOutput_width}" HorizontalAlignment="Center" Height="25" PreviewTextInput="amount_TextBox_PreviewTextInput" TextChanged="amount_TextBox_TextChanged" Margin="5,5">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Modifiers="Control" Command="{StaticResource newFoodCommand}" CommandParameter="{Binding ElementName=thisControl}"/>
+            </TextBox.InputBindings>
+            <TextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="삭제" Click="Remove_Click"/>
+                </ContextMenu>
+            </TextBox.ContextMenu>
+        </TextBox>
+        <TextBlock Grid.Column="1" Name="unitPrice_TextBlock" Width="{StaticResource foodPrice_InputOutput_width}" HorizontalAlignment="Center" Height="25" Background="White" Margin="5,5"  TextAlignment="Right"/>
+        <TextBlock Grid.Column="2" Name="totalPrice_TextBlock" Width="{StaticResource foodTotalPrice_InputOutput_width}" HorizontalAlignment="Center" Height="25" Background="White" Margin="5,5"  TextAlignment="Right"/>
+        <TextBox Grid.Column="3" Name="deadline_TextBlock" Width="{StaticResource foodDeadLine_InputOutput_width}" HorizontalAlignment="Center" Height="25" Background="White" Margin="5,5">
+            <TextBox.InputBindings>
+                <KeyBinding Key="Enter" Modifiers="Control" Command="{StaticResource newFoodCommand}" CommandParameter="{Binding ElementName=thisControl}"/>
+            </TextBox.InputBindings>
+            <TextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="삭제" Click="Remove_Click"/>
+                </ContextMenu>
+            </TextBox.ContextMenu>
+        </TextBox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,9 @@
+F:\VisualStudioProjects\WPF\Jego\ExcelModelLib\bin\Debug\ExcelModelLib.dll
+F:\VisualStudioProjects\WPF\Jego\ExcelModelLib\bin\Debug\ExcelModelLib.pdb
+F:\VisualStudioProjects\WPF\Jego\ExcelModelLib\obj\Debug\ExcelModelLib.csprojResolveAssemblyReference.cache
+F:\VisualStudioProjects\WPF\Jego\ExcelModelLib\obj\Debug\ExcelModelLib.dll
+F:\VisualStudioProjects\WPF\Jego\ExcelModelLib\obj\Debug\ExcelModelLib.pdb
+C:\Project\Wpf\Jego\ExcelModelLib\bin\Debug\ExcelModelLib.dll
+C:\Project\Wpf\Jego\ExcelModelLib\bin\Debug\ExcelModelLib.pdb
+C:\Project\Wpf\Jego\ExcelModelLib\obj\Debug\ExcelModelLib.dll
+C:\Project\Wpf\Jego\ExcelModelLib\obj\Debug\ExcelModelLib.pdb

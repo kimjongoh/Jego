@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="JegoModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Project\Wpf\Jego\JegoDatabase\DB\Jego.db&#xD;&#xA;              " Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BuyTrn">
+    <Key>
+      <PropertyRef Name="trn_idx" />
+    </Key>
+    <Property Name="trn_idx" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="f_code" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="date" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+    <Property Name="total_price" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+    <Property Name="deadline" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="f_code" />
+    </Key>
+    <Property Name="f_code" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="unit_pirce" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+    <Property Name="desc" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="type" Type="nvarchar" MaxLength="2147483647" />
+    <Property Name="unit" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="his_idx" />
+    </Key>
+    <Property Name="his_idx" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="trn_idx" Type="integer" Nullable="false" />
+    <Property Name="trn_type" Type="integer" Nullable="false" />
+    <Property Name="update_date" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Remain">
+    <Key>
+      <PropertyRef Name="fh_code" />
+    </Key>
+    <Property Name="fh_code" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="f_code" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="date" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+    <Property Name="deadline" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="deadline_date" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="remain_amount" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UseTrn">
+    <Key>
+      <PropertyRef Name="trn_idx" />
+    </Key>
+    <Property Name="trn_idx" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="f_code" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="date" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+    <Property Name="amount" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+    <Property Name="total_price" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+    <Property Name="deadline" Type="nvarchar" MaxLength="2147483647" />
+  </EntityType>
+  <EntityContainer Name="JegoModelStoreContainer">
+    <EntitySet Name="BuyTrn" EntityType="Self.BuyTrn" store:Type="Tables" />
+    <EntitySet Name="Food" EntityType="Self.Food" store:Type="Tables" />
+    <EntitySet Name="History" EntityType="Self.History" store:Type="Tables" />
+    <EntitySet Name="Remain" EntityType="Self.Remain" store:Type="Tables" />
+    <EntitySet Name="UseTrn" EntityType="Self.UseTrn" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="identity_color">#FFF15A22</Color>
+    <Color x:Key="headerColor">#FFF18A02</Color>
+    <Color x:Key="frame_header_color">#FFF2F2F2</Color>
+    <Color x:Key="mainStrongBlack">#FF3E3A39</Color>
+    <Color x:Key="identityOrangColor">#FFF18A02</Color>
+    <Color x:Key="lineColor">#FFACADAE</Color>
+    <Color x:Key="transparentColor">#00FFFFFF</Color>
+    <Color x:Key="gridButtonHoverColor">#FFE8ECF3</Color>
+    <Color x:Key="topNavigationHeaderColor">#FF21418B</Color>
+    <Color x:Key="mainNavigationHeaderColor">#FF4E6BAB</Color>
+    <Color x:Key="mainHintColor">#FF8C8C8C</Color>
+    <Color x:Key="mainStateHintColor">#FF717171</Color>
+    <Color x:Key="lightLineColor">#FFF2F2F2</Color>
+    <Color x:Key="businessDetailSaparateLineColor">#FFB4B4B4</Color>
+    <Color x:Key="whiteColor">#FFFFFFFF</Color>
+    <Color x:Key="EEEEEEColor">#FFEEEEEE</Color>
+    <Color x:Key="aaEEEEEEColor">#77EEEEEE</Color>
+    <Color x:Key="profile_background_Color">#FFDCDCDC</Color>
+    <Color x:Key="blue_button_Color">#FF21418B</Color>
+    <Color x:Key="blue_button_Hover_Color">#FF90A0C5</Color>
+    <Color x:Key="orange_button_Color">#FFF18A02</Color>
+    <Color x:Key="orange_button_Hover_Color">#FFF8C482</Color>
+    <Color x:Key="object_Line_Color">#FFACADAE</Color>
+</ResourceDictionary>

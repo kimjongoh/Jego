@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C19DF2BF-B9E7-4E6C-A83E-79CCDF71F1A0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Jego</RootNamespace>
+    <AssemblyName>Jego</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>3139f252</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Fluent">
+      <HintPath>Dlls\Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="KStringExtension, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\KString.2.0.2\lib\portable-net4+sl5+wp71+win8\KStringExtension.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.103\lib\net451\System.Data.SQLite.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.103\lib\net451\System.Data.SQLite.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.103.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.103\lib\net451\System.Data.SQLite.Linq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AutoCompletes\FoodAutoCompleteManager.cs" />
+    <Compile Include="AutoCompletes\Providers\FoodDataProvider.cs" />
+    <Compile Include="AutoCompletes\Providers\FoodDataProviderManager.cs" />
+    <Compile Include="Commands\Interfaces\NewFoodInterface.cs" />
+    <Compile Include="Commands\NewFoodCommand.cs" />
+    <Compile Include="Controls\CustomControls\HoverImageButton.xaml.cs">
+      <DependentUpon>HoverImageButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPages\InputOutputControls\InputOutputContents.xaml.cs">
+      <DependentUpon>InputOutputContents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPages\InputOutputControls\InputOutputItem.xaml.cs">
+      <DependentUpon>InputOutputItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPages\InputOutputControls\InputOutputItemBuy.xaml.cs">
+      <DependentUpon>InputOutputItemBuy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPages\InputOutputControls\InputOutputItemFood.xaml.cs">
+      <DependentUpon>InputOutputItemFood.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPages\InputOutputControls\InputOutputItemUse.xaml.cs">
+      <DependentUpon>InputOutputItemUse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPages\InputOutputControls\InputOutputTypeContainer.xaml.cs">
+      <DependentUpon>InputOutputTypeContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPages\RemainControls\RemainContents.xaml.cs">
+      <DependentUpon>RemainContents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPages\RemainControls\RemainListItem.xaml.cs">
+      <DependentUpon>RemainListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TypeManageWindowControls\TypeManagerListItem.xaml.cs">
+      <DependentUpon>TypeManagerListItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\AlertDialog.xaml.cs">
+      <DependentUpon>AlertDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ExcelProgressWindow.xaml.cs">
+      <DependentUpon>ExcelProgressWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\TypeAddDialog.xaml.cs">
+      <DependentUpon>TypeAddDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\TypeManageDialog.xaml.cs">
+      <DependentUpon>TypeManageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FSM\Collectors\InputOutputUICollector.cs" />
+    <Compile Include="FSM\Interfaces\FMS\During\IFSMChangeDateDuring.cs" />
+    <Compile Include="FSM\Interfaces\FMS\During\IFSMRemoveFoodTypeDuring.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Input\IFSMSaveInputOutputData.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Input\IFSMSaveInputOutputDate.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Manager\IFSMWriteExcelManager.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Output\IFSMAddFoodTypeOutput.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Output\IFSMChangeDateOutput.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Output\IFSMFoodInfomationChangeOutput.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Output\IFSMFoodSelectChangeOutput.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Output\IFSMRemoveFoodTypeOutput.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Params\IFSMChangeDateParam.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Params\IFSMFoodInfomationChangeParam.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Params\IFSMFoodSelectChangeParam.cs" />
+    <Compile Include="FSM\Interfaces\IFSMControl.cs" />
+    <Compile Include="FSM\Managers\FSMInputOutputManagerHub.cs" />
+    <Compile Include="FSM\Managers\SubFSMs\FSMFoodInfomationChangeManager.cs" />
+    <Compile Include="FSM\Managers\SubFSMs\FSMFoodSelectChangeManager.cs" />
+    <Compile Include="FSM\Managers\SubFSMs\FSMAddFoodTypeManager.cs" />
+    <Compile Include="FSM\Managers\SubFSMs\FSMChangeDateManager.cs" />
+    <Compile Include="FSM\Managers\SubFSMs\FSMExcelLoadingWindowManager.cs" />
+    <Compile Include="FSM\Managers\SubFSMs\FSMRemoveFoodTypeManager.cs" />
+    <Compile Include="FSM\Managers\SubFSMs\FSMSaveInputOutputManager.cs" />
+    <Compile Include="FSM\Managers\SubFSMs\FSMTodayExcelWriteManager.cs" />
+    <Compile Include="FSM\Managers\SubFSMs\FSMTodaySimpleExcelWriteManager.cs" />
+    <Compile Include="FSM\Models\DayUpdateData.cs" />
+    <Compile Include="FSM\Models\FoodInfomationChangeModel.cs" />
+    <Compile Include="FSM\Models\FoodSelectChangeModel.cs" />
+    <Compile Include="FSM\Models\ProgressTransfer.cs" />
+    <Compile Include="FSM\Models\TodaySetModel.cs" />
+    <Compile Include="Helper\DirectoryHelper.cs" />
+    <Compile Include="Helper\FindParentHelper.cs" />
+    <Compile Include="Helper\ImageResourceLoader.cs" />
+    <Compile Include="SharedPreferences\FoodTypeManager.cs" />
+    <Compile Include="SharedPreferences\FoodTypes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>FoodTypes.settings</DependentUpon>
+    </Compile>
+    <Page Include="Controls\CustomControls\HoverImageButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\DateControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\InputOutputControls\InputOutputContents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\InputOutputControls\InputOutputFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\InputOutputControls\InputOutputHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\InputOutputControls\InputOutputItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\InputOutputControls\InputOutputItemBuy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\InputOutputControls\InputOutputItemFood.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\InputOutputControls\InputOutputItemUse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\InputOutputControls\InputOutputTypeContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\MainFrame.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\RemainControls\RemainContents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainPages\RemainControls\RemainListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TypeManageWindowControls\TypeManagerListItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\AlertDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ExcelProgressWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\TypeAddDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\TypeManageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\MainPages\DateControl.xaml.cs">
+      <DependentUpon>DateControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPages\InputOutputControls\InputOutputFrame.xaml.cs">
+      <DependentUpon>InputOutputFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPages\InputOutputControls\InputOutputHeader.xaml.cs">
+      <DependentUpon>InputOutputHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainPages\MainFrame.xaml.cs">
+      <DependentUpon>MainFrame.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleResources\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleResources\LayoutResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StyleResources\StyleResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="SharedPreferences\FoodTypes.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>FoodTypes.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dlls\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Managers\" />
+    <Folder Include="Provider\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dragonz.actb\dragonz.actb.csproj">
+      <Project>{89bc47c7-f14d-46c5-8b9b-0db90ce2ac42}</Project>
+      <Name>dragonz.actb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExcelTemplateLib\ExcelTemplateLib.csproj">
+      <Project>{aec2ab27-911f-4805-9912-5d4b88cb7568}</Project>
+      <Name>ExcelTemplateLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\JegoDatabase\JegoDatabase.csproj">
+      <Project>{ebe66b90-037f-4562-941b-1b1e36170bec}</Project>
+      <Name>JegoDatabase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Fluent\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Fluent\excel.png" />
+    <Resource Include="Images\Fluent\excel_odd.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Fluent\list_add.png" />
+    <Resource Include="Images\Fluent\list_remove.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Fluent\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Prg\remove_active.png" />
+    <Resource Include="Images\Prg\remove_hover.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.103\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.103\build\net451\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하세요. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하세요. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.103\build\net451\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.103\build\net451\System.Data.SQLite.Core.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
