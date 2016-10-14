@@ -67,8 +67,8 @@ namespace Jego.Controls.MainPages.InputOutputControls {
         }
 
         private void initFoodItem(DayFoodModel dayModel) {
-            foodItem.setChangeFoodListener(changeFood);
             foodItem.setFood(dayModel.food);
+            foodItem.setChangeFoodListener(changeFood);
         }
 
         private void changeFood(Food food) {

@@ -99,9 +99,11 @@ namespace Jego.FSM.Managers.SubFSMs {
             SimpleExcelTemplateCreator testTemplete = new SimpleExcelTemplateCreator(1, getFilePath() + getFileName(), date, typeBaseDayModels, progressTransfer);
             ExcelManager.SaveExcel(testTemplete);
         }
+
         private string getExcelDirectory() {
             return System.IO.Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\Excels\\";
         }
+
         private string getLastDirectoryName() {
             return "간단포멧\\";
         }

@@ -27,7 +27,6 @@ namespace Jego.Controls.MainPages.InputOutputControls {
         private Action<Food> foodListener;
         private FoodAutoCompleteManager nameAutoCompleteManager;
         private string type;
-       
 
         public InputOutputItemFood() {
             InitializeComponent();
@@ -105,20 +104,26 @@ namespace Jego.Controls.MainPages.InputOutputControls {
                 amount = 0;
             }
             food.unit_pirce = amount;
-            food.CreateCode();
-            foodListener(food);
+            if (foodListener != null) {
+                food.CreateCode();
+                foodListener(food);
+            }
         }
 
         private void foodName_TextBox_TextChanged(object sender, TextChangedEventArgs e) {
             food.name = foodName_TextBox.Text.Trim();
-            food.CreateCode();
-            foodListener(food);
+            if (foodListener != null) {
+                food.CreateCode();
+                foodListener(food);
+            }
         }
 
         private void foodDesc_TextBox_TextChanged(object sender, TextChangedEventArgs e) {
             food.desc = foodDesc_TextBox.Text.Trim();
-            food.CreateCode();
-            foodListener(food);
+            if (foodListener != null) {
+                food.CreateCode();
+                foodListener(food);
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e) {
