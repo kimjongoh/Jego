@@ -63,13 +63,33 @@ namespace Jego.FSM.Managers.SubFSMs {
         }
 
         private void createFoodRemains(Dictionary<string, Food> foodDic, TodaysData todayData) {
+            Dictionary<string, FoodRemain> dic = new Dictionary<string, FoodRemain>();
+
+            if (todayData.todayRemains != null) {
+                foreach (Remain remain in todayData.todayRemains) {
+                    if (remain != null && remain.amount != 0) {
+                        FoodRemain foodRemain = new FoodRemain() { food = foodDic[remain.f_code], todayRemain = remain };
+                        dic.Add(remain.f_code, foodRemain);
+                    }
+                }
+            }
+
             if (todayData.remains != null) {
                 foreach (Remain remain in todayData.remains) {
                     if (remain != null && remain.amount != 0) {
-                        FoodRemain foodRemain = new FoodRemain() { food = foodDic[remain.f_code], remain = remain };
-                        foodRemains.Add(foodRemain);
+                        if (dic.ContainsKey(remain.f_code)) {
+                            FoodRemain foodRemain = dic[remain.f_code];
+                            foodRemain.remain = remain;
+                        } else {
+                            FoodRemain foodRemain = new FoodRemain() { food = foodDic[remain.f_code], remain = remain };
+                            dic.Add(remain.f_code, foodRemain);
+                        }
                     }
                 }
+            }
+
+            foreach (KeyValuePair<string, FoodRemain> entry in dic) {
+                foodRemains.Add(entry.Value);
             }
         }
 

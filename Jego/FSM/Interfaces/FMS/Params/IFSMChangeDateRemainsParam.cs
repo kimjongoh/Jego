@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace Jego.FSM.Interfaces.FMS.Params {
     public interface IFSMChangeDateRemainsParam {
-        public List<FoodRemain> GetFoodRemain();
+        List<FoodRemain> GetFoodRemain();
     }
 }

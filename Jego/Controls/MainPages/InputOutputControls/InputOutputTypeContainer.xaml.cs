@@ -63,7 +63,7 @@ namespace Jego.Controls.MainPages.InputOutputControls {
         }
 
         public void createNewFood() {
-            InputOutputItem item = new InputOutputItem(type, new DayFoodModel(), changeBuyTotalPrice, changeUseTotalPrice);
+            InputOutputItem item = new InputOutputItem(type, new FoodBuyUse(), changeBuyTotalPrice, changeUseTotalPrice);
             inputOutput_ListView.Items.Add(item);
             item.setInitFocus();
         }
@@ -89,6 +89,9 @@ namespace Jego.Controls.MainPages.InputOutputControls {
 
         public void Clear() {
             inputOutput_ListView.Items.Clear();
+            totalblank_textBlock.Text = "";
+            totalBuy_textBlock.Text = "";
+            totalUse_textBlock.Text = "";
         }
 
         public void RemoveItem(InputOutputItem inputOutputItem, Food food) {
@@ -113,7 +116,7 @@ namespace Jego.Controls.MainPages.InputOutputControls {
             return dayModels;
         }
 
-        public void addDayModel(DayFoodModel dayModel) {
+        public void addDayModel(FoodBuyUse dayModel) {
             inputOutput_ListView.Items.Add(new InputOutputItem(type, dayModel, changeBuyTotalPrice, changeUseTotalPrice));
             changeBuyTotalPrice();
         }

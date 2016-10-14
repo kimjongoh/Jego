@@ -141,13 +141,16 @@
     <Compile Include="FSM\Interfaces\FMS\During\IFSMRemoveFoodTypeDuring.cs" />
     <Compile Include="FSM\Interfaces\FMS\Input\IFSMSaveInputOutputData.cs" />
     <Compile Include="FSM\Interfaces\FMS\Input\IFSMSaveInputOutputDate.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Input\IFSMSaveInputOutputRemain.cs" />
     <Compile Include="FSM\Interfaces\FMS\Manager\IFSMWriteExcelManager.cs" />
     <Compile Include="FSM\Interfaces\FMS\Output\IFSMAddFoodTypeOutput.cs" />
     <Compile Include="FSM\Interfaces\FMS\Output\IFSMChangeDateOutput.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Output\IFSMChangeDateRemainsOutput.cs" />
     <Compile Include="FSM\Interfaces\FMS\Output\IFSMFoodInfomationChangeOutput.cs" />
     <Compile Include="FSM\Interfaces\FMS\Output\IFSMFoodSelectChangeOutput.cs" />
     <Compile Include="FSM\Interfaces\FMS\Output\IFSMRemoveFoodTypeOutput.cs" />
     <Compile Include="FSM\Interfaces\FMS\Params\IFSMChangeDateParam.cs" />
+    <Compile Include="FSM\Interfaces\FMS\Params\IFSMChangeDateRemainsParam.cs" />
     <Compile Include="FSM\Interfaces\FMS\Params\IFSMFoodInfomationChangeParam.cs" />
     <Compile Include="FSM\Interfaces\FMS\Params\IFSMFoodSelectChangeParam.cs" />
     <Compile Include="FSM\Interfaces\IFSMControl.cs" />
@@ -162,13 +165,18 @@
     <Compile Include="FSM\Managers\SubFSMs\FSMTodayExcelWriteManager.cs" />
     <Compile Include="FSM\Managers\SubFSMs\FSMTodaySimpleExcelWriteManager.cs" />
     <Compile Include="FSM\Models\DayUpdateData.cs" />
+    <Compile Include="FSM\Models\FoodBuyUse.cs" />
+    <Compile Include="FSM\Models\FoodBuyUses.cs" />
     <Compile Include="FSM\Models\FoodInfomationChangeModel.cs" />
+    <Compile Include="FSM\Models\FoodRemain.cs" />
+    <Compile Include="FSM\Models\FoodRemains.cs" />
     <Compile Include="FSM\Models\FoodSelectChangeModel.cs" />
     <Compile Include="FSM\Models\ProgressTransfer.cs" />
     <Compile Include="FSM\Models\TodaySetModel.cs" />
     <Compile Include="Helper\DirectoryHelper.cs" />
     <Compile Include="Helper\FindParentHelper.cs" />
     <Compile Include="Helper\ImageResourceLoader.cs" />
+    <Compile Include="Helper\RemainDeadlineHelper.cs" />
     <Compile Include="SharedPreferences\FoodTypeManager.cs" />
     <Compile Include="SharedPreferences\FoodTypes.Designer.cs">
       <AutoGen>True</AutoGen>

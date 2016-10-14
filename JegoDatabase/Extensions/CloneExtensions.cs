@@ -47,6 +47,9 @@ namespace JegoDatabase.Extensions {
             newRemain.f_code = remain.f_code;
             newRemain.fh_code = remain.fh_code;
             newRemain.deadline = remain.deadline;
+            newRemain.buy_amount = remain.buy_amount;
+            newRemain.use_amount = remain.use_amount;
+            newRemain.deadline_date = remain.deadline_date;
             return newRemain;
         }
 

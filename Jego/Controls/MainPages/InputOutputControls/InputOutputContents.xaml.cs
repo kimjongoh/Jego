@@ -64,8 +64,10 @@ namespace Jego.Controls.MainPages.InputOutputControls {
                 container.Clear();
                 containerDic.Add(container.type, container);
             }
-            List<DayFoodModel> dayModels = param.getDayModels();
-            foreach (DayFoodModel dayModel in dayModels) {
+
+            List<FoodBuyUse> dayModels = param.GetFoodBuyUse();
+
+            foreach (FoodBuyUse dayModel in dayModels) {
                 Food food = dayModel.food;
                 if (containerDic.ContainsKey(food.type)) {
                     containerDic[food.type].addDayModel(dayModel);

@@ -11,6 +11,8 @@ namespace JegoDatabase.Models {
         public List<UseTrn> useTrns { get; set; }
         public List<Remain> remains { get; set; }
 
+        public List<Remain> todayRemains { get; set; }
+
         public TodaysData() { }
     }
 }

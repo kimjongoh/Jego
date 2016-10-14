@@ -27,10 +27,10 @@ namespace Jego.AutoCompletes {
             Food food = foodDataProvider.GetFood(text);
 
             if (food != null) {
-                _textBox.Text = food.name;
                 if (foodAutoCompleteCallback != null) {
                     foodAutoCompleteCallback(food);
                 }
+                _textBox.Text = food.name;
             } else {
                 _textBox.Text = text;
             }

@@ -117,24 +117,16 @@ namespace JegoDatabase.Manager {
 
         public static void RefreshAfterRemain(JegoEntities context, Remain remain) {
             var nextRemains = context.Remain.Where(e => e.f_code.Equals(remain.f_code) 
-                && String.Compare(e.date, remain.date) == 1).OrderBy(e => e.date);
+                && String.Compare(e.date, remain.date) > 0).OrderBy(e => e.date);
 
             Remain exRemain = remain;
             if (nextRemains.Count() > 0) {
+                
                 List<Remain> remains = nextRemains.ToList();
                 foreach (Remain editRemain in remains) {
                     string updateDate = editRemain.date;
-                    editRemain.amount = exRemain.amount;
-
-                    BuyTrn buyTrn = GetBuyTrn(context, remain.f_code, updateDate);
-                    if (buyTrn != null) {
-                        editRemain.amount += buyTrn.amount;    
-                    }
-
-                    UseTrn useTrn = GetUseTrn(context, remain.f_code, updateDate);
-                    if (useTrn != null) {
-                        editRemain.amount -= useTrn.amount;
-                    }
+                    //editRemain.amount = exRemain.amount + editRemain.remain_amount;
+                    
                     exRemain = editRemain;
                 }
             }
@@ -208,6 +200,63 @@ namespace JegoDatabase.Manager {
                 return useTrns.ToList();
             } else {
                 return new List<UseTrn>();
+            }
+        }
+
+        public static List<Remain> GetTodayRemains(JegoEntities context, string dateStr) {
+            var remains = context.Remain.Where(e => e.date.Equals(dateStr))
+                .DistinctBy(p => p.f_code);
+
+            if (remains.Count() > 0) {
+                return remains.ToList();
+            } else {
+                return new List<Remain>();
+            }
+        }
+
+        public static List<Remain> GetNextRemains(JegoEntities context, string f_code, string dateStr) {
+            var remains = context.Remain.Where(e => e.f_code.Equals(f_code) && String.Compare(e.date, dateStr) > 0)
+                .OrderBy(o => o.date);
+
+            if (remains.Count() > 0) {
+                return remains.ToList();
+            } else {
+                return new List<Remain>();
+            }
+        }
+
+        public static Remain GetLastUseRemain(JegoEntities context, string f_code, string date) {
+            var remains = context.Remain.Where(e => e.f_code.Equals(f_code) && String.Compare(e.date, date) < 0 && e.use_amount < 0)
+                .OrderByDescending(o => o.date)
+                .DistinctBy(p => p.f_code);
+
+            if (remains.Count() > 0) {
+                return remains.First();
+            } else {
+                return null;
+            }
+        }
+
+        public static Remain GetFirstBuyRemain(JegoEntities context, string f_code) {
+            var remains = context.Remain.Where(e => e.f_code.Equals(f_code) && e.buy_amount > 0)
+               .OrderBy(o => o.date)
+               .DistinctBy(p => p.f_code);
+
+            if (remains.Count() > 0) {
+                return remains.First();
+            } else {
+                return null;
+            }
+        }
+
+        public static List<BuyTrn> GetNextBuyTrn(JegoEntities context, string f_code, string date) {
+            var buyTrns = context.BuyTrn.Where(e => e.f_code.Equals(f_code) && String.Compare(e.date, date) > 0)
+               .OrderBy(o => o.date);
+
+            if (buyTrns.Count() > 0) {
+                return buyTrns.ToList();
+            } else {
+                return null;
             }
         }
     }

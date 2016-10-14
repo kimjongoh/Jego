@@ -51,25 +51,7 @@ namespace JegoTestModule {
                     BuyTrn breadBuy = CalculationManager.createBuyTrn(bread, 100, date, "");
                     DatabaseManager.PutBuyTrn(context, breadBuy);
 
-                    Remain riceRemain = CalculationManager.createRemain(rice.f_code, date, null, riceBuy, null);
-                    Remain ramenRemain = CalculationManager.createRemain(ramen.f_code, date, null, ramenBuy, null);
-                    Remain breadRemain = CalculationManager.createRemain(bread.f_code, date, null, breadBuy, null);
-                    
-                    Remain updatedRiceRemain = DatabaseManager.PutRemain(context, riceRemain);
-                    if (updatedRiceRemain != null) {
-                        DatabaseManager.RefreshAfterRemain(context, updatedRiceRemain);
-                    }
-
-                    Remain updatedRamenRemain = DatabaseManager.PutRemain(context, ramenRemain);
-                    if (updatedRamenRemain != null) {
-                        DatabaseManager.RefreshAfterRemain(context, updatedRamenRemain);
-                    }
-
-                    Remain updatedBreadRemain = DatabaseManager.PutRemain(context, breadRemain);
-                    if (updatedBreadRemain != null) {
-                        DatabaseManager.RefreshAfterRemain(context, updatedBreadRemain);
-                    }
-
+                   
                     DatabaseManager.SaveChanges(context);
                 }
             } catch (Exception e) {

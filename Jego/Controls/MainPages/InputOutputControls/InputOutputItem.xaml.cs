@@ -27,49 +27,55 @@ namespace Jego.Controls.MainPages.InputOutputControls {
         public delegate void TotalPriceChangeDelegate();
         private TotalPriceChangeDelegate buyTotalPriceChangeListener;
         private TotalPriceChangeDelegate useTotalPriceChangeListener;
-        private Remain remain;
-        
-        public InputOutputItem(string type, DayFoodModel dayModel, 
+
+        public InputOutputItem(string type, FoodBuyUse dayModel, 
             TotalPriceChangeDelegate buyTotalPriceChangeListener, 
             TotalPriceChangeDelegate useTotalPriceChangeListener) {
             InitializeComponent();
+
             this.buyTotalPriceChangeListener = buyTotalPriceChangeListener;
             this.useTotalPriceChangeListener = useTotalPriceChangeListener;
-            this.remain = dayModel.remain;
             foodItem.setType(type);
             
-            init(dayModel);
             setBuyTrn(dayModel.buyTrn);
             setUseTrn(dayModel.useTrn);
+
+            initFoodItem(dayModel);
             initBuyUseTrn(buyTotalPriceChangeCallback, useTotalPriceChangeCallback);
+            changeFood(dayModel.food);
+            sendUpdateRemain();
         }
 
-        private void buyTotalPriceChangeCallback() {
+        private void sendUpdateRemain() {
             Food food = foodItem.GetFood();
             string f_code = "";
             if (food != null) f_code = food.f_code;
 
             FSMInputOutputManagerHub.GetFoodInfomationChangeManager().Process(new FoodInfomationChangeModel(f_code, this));
-            
+        }
+        private void buyTotalPriceChangeCallback() {
+            sendUpdateRemain();
             buyTotalPriceChangeListener();
         }
 
         private void useTotalPriceChangeCallback() {
-            Food food = foodItem.GetFood();
-            string f_code = "";
-            if (food != null) f_code = food.f_code;
-            FSMInputOutputManagerHub.GetFoodInfomationChangeManager().Process(new FoodInfomationChangeModel(f_code, this));
+            sendUpdateRemain();
             useTotalPriceChangeListener();
         }
 
-        private void init(DayFoodModel dayModel) {
-            initFoodItem(dayModel);
-        }
-
-        private void initFoodItem(DayFoodModel dayModel) {
+        private void initFoodItem(FoodBuyUse dayModel) {
             foodItem.setFood(dayModel.food);
             foodItem.setChangeFoodListener(changeFood);
         }
+
+        public void setBuyTrn(BuyTrn buyTrn) {
+            buyItem.setBuyTrn(buyTrn);
+        }
+
+        public void setUseTrn(UseTrn useTrn) {
+            useItem.setUseTrn(useTrn);
+        }
+
 
         private void changeFood(Food food) {
             buyItem.setFood(food);
@@ -82,14 +88,7 @@ namespace Jego.Controls.MainPages.InputOutputControls {
             useItem.setTotalPriceChangeListener(useTotalPriceChangeListener);
         }
 
-        public void setBuyTrn(BuyTrn buyTrn) {
-            buyItem.setBuyTrn(buyTrn);
-        }
-
-        public void setUseTrn(UseTrn useTrn) {
-            useItem.setUseTrn(useTrn);
-        }
-
+       
         public decimal GetBuyTotalPrice() {
             return buyItem.getTotalPrice();
         }

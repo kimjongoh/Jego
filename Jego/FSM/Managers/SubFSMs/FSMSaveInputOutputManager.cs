@@ -1,6 +1,7 @@
 ﻿using ExcelTemplateLib.DataModels;
 using Jego.FSM.Interfaces.FMS.Input;
 using Jego.FSM.Models;
+using Jego.Helper;
 using JegoDatabase.Entities;
 using JegoDatabase.Manager;
 using System;
@@ -13,6 +14,7 @@ namespace Jego.FSM.Managers.SubFSMs {
     public class FSMSaveInputOutputManager {
         private IFSMSaveInputOutputDate dateModule;
         private IFSMSaveInputOutputData dataModule;
+        private IFSMSaveInputOutputRemain remainModule;
 
         public FSMSaveInputOutputManager() {}
 
@@ -24,11 +26,18 @@ namespace Jego.FSM.Managers.SubFSMs {
             this.dataModule = dataModule;
         }
 
+        public void setRemainModule(IFSMSaveInputOutputRemain remainModule) {
+            this.remainModule = remainModule;
+        }
+
         public void Process() {
             string date = GetDate();
             List<DayFoodModel> todayData = dataModule.GetTodaySetDatas();
             saveFoods(todayData);
             saveDayData(todayData, date);
+
+            List<Remain> todayRemain = remainModule.GetTodayRemains();
+            saveRemainTrns(todayRemain, date);
         }
 
         private void saveFoods(List<DayFoodModel> todayDatas) {
@@ -47,29 +56,22 @@ namespace Jego.FSM.Managers.SubFSMs {
         private void saveDayData(List<DayFoodModel> todayData, string date) {
             saveBuyTrns(todayData, date);
             saveUseTrns(todayData, date);
-            saveRemainTrns(todayData, date);
         }
 
-        private void saveRemainTrns(List<DayFoodModel> todayData, string date) {
-            List<Remain> exRemains = JegoManager.GetAllLastRemains(date);
-            Dictionary<string, Remain> exRemainDic = new Dictionary<string, Remain>();
+        private void saveRemainTrns(List<Remain> todayRemain, string date) {
 
-            foreach (Remain remain in exRemains) {
-                exRemainDic.Add(remain.f_code, remain);
-            }
-
-            List<Remain> remains = new List<Remain>();
-            foreach (DayFoodModel dayModel in todayData) {
-                Remain exRemain;
-                if (exRemainDic.ContainsKey(dayModel.food.f_code)) {
-                    exRemain = exRemainDic[dayModel.food.f_code];
-                } else {
-                    exRemain = null;
+            foreach (Remain remain in todayRemain) {
+                remain.date = date;
+                remain.fh_code = remain.f_code + date;
+                List<Remain> nextRemains = JegoManager.GetNextRemains(remain.f_code, remain.date);
+                Remain beforeRemain = remain;
+                foreach (Remain searchRemain in nextRemains) {
+                    RemainDeadlineHelper.setDeadLine(searchRemain, beforeRemain);
+                    searchRemain.amount = beforeRemain.amount + searchRemain.buy_amount + searchRemain.use_amount;
                 }
-                Remain remain = CalculationManager.createRemain(dayModel.food.f_code, date, exRemain, dayModel.buyTrn, dayModel.useTrn);
-                remains.Add(remain);
+                JegoManager.AddRemains(nextRemains);
             }
-            JegoManager.AddRemains(remains);
+            JegoManager.AddRemains(todayRemain);
         }
 
         private void saveBuyTrns(List<DayFoodModel> todayData, string date) {

@@ -50,7 +50,7 @@ namespace Jego.FSM.Managers {
             if (contents != null) manager.addOutputUI(contents);
             if (remainContents != null) {
                 manager.addDuringUI(remainContents);
-                manager.addOutputUI(remainContents);
+                manager.addRemainOutputUI(remainContents);
             }
 
             return manager;
@@ -61,9 +61,11 @@ namespace Jego.FSM.Managers {
 
             DateControl dateControl = InputOutputUICollector.dateControl;
             InputOutputContents contents = InputOutputUICollector.inputOutputContents;
+            RemainContents remainContents = InputOutputUICollector.remainContents;
 
             if (dateControl != null) manager.setDateModule(dateControl);
             if (contents != null) manager.setDataModule(contents);
+            if (remainContents != null) manager.setRemainModule(remainContents);
 
             return manager;
         }

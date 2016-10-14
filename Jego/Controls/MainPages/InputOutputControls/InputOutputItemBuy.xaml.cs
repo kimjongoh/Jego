@@ -22,6 +22,7 @@ namespace Jego.Controls.MainPages.InputOutputControls {
     public partial class InputOutputItemBuy : UserControl , NewFoodInterface {
         private InputOutputItem.TotalPriceChangeDelegate totalPriceChangeCallback;
         private Food food;
+        private decimal defaultAmount = 0;
         public InputOutputItemBuy() {
             InitializeComponent();
         }
@@ -45,13 +46,14 @@ namespace Jego.Controls.MainPages.InputOutputControls {
         public void setBuyTrn(BuyTrn buyTrn) {
             if (buyTrn != null) {
                 amount_TextBox.Text = buyTrn.amount.ToString();
+                defaultAmount = buyTrn.amount;
                 if (buyTrn.deadline != null)
                     deadline_TextBlock.Text = buyTrn.deadline;
             }
         }
 
         public BuyTrn getBuyTrn() {
-            decimal _amount = 0;
+            decimal _amount = defaultAmount;
             try {
                 _amount = decimal.Parse(amount_TextBox.Text);
                 if (_amount != 0)
@@ -93,8 +95,10 @@ namespace Jego.Controls.MainPages.InputOutputControls {
             } catch {
                 amount = 0;
             }
-
-            return food.unit_pirce * amount;
+            if (food != null)
+                return food.unit_pirce * amount;
+            else
+                return 0;
         }
 
         private void Remove_Click(object sender, RoutedEventArgs e) {

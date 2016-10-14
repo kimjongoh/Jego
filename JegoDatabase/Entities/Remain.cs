@@ -20,6 +20,8 @@ namespace JegoDatabase.Entities
         public decimal amount { get; set; }
         public string deadline { get; set; }
         public string deadline_date { get; set; }
-        public decimal remain_amount { get; set; }
+        public decimal extra_amount { get; set; }
+        public decimal buy_amount { get; set; }
+        public decimal use_amount { get; set; }
     }
 }

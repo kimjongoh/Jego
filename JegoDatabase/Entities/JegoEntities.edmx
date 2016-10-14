@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="JegoModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Project\Wpf\Jego\JegoDatabase\DB\Jego.db&#xD;&#xA;              " Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="JegoModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=C:\Project\Wpf\Jego\Jego\bin\Debug\DB\Jego.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BuyTrn">
           <Key>
             <PropertyRef Name="trn_idx" />
@@ -46,7 +46,9 @@
           <Property Name="amount" Type="decimal" Precision="53" Scale="0" Nullable="false" />
           <Property Name="deadline" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
           <Property Name="deadline_date" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
-          <Property Name="remain_amount" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+          <Property Name="extra_amount" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+          <Property Name="buy_amount" Type="decimal" Precision="53" Scale="0" Nullable="false" />
+          <Property Name="use_amount" Type="decimal" Precision="53" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="UseTrn">
           <Key>
@@ -70,24 +72,31 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="JegoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="JegoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BuyTrn" EntityType="JegoModel.BuyTrn" />
+          <EntitySet Name="Food" EntityType="JegoModel.Food" />
+          <EntitySet Name="History" EntityType="JegoModel.History" />
+          <EntitySet Name="UseTrn" EntityType="JegoModel.UseTrn" />
+          <EntitySet Name="Remain" EntityType="JegoModel.Remain" />
+        </EntityContainer>
         <EntityType Name="BuyTrn">
           <Key>
             <PropertyRef Name="trn_idx" />
           </Key>
           <Property Name="trn_idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="f_code" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="amount" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
-          <Property Name="total_price" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
+          <Property Name="f_code" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="amount" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
+          <Property Name="total_price" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
           <Property Name="deadline" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Food">
           <Key>
             <PropertyRef Name="f_code" />
           </Key>
-          <Property Name="f_code" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="unit_pirce" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
+          <Property Name="f_code" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="unit_pirce" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
           <Property Name="desc" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="type" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="unit" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
@@ -99,26 +108,19 @@
           <Property Name="his_idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="trn_idx" Type="Int64" Nullable="false" />
           <Property Name="trn_type" Type="Int64" Nullable="false" />
-          <Property Name="update_date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="update_date" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="UseTrn">
           <Key>
             <PropertyRef Name="trn_idx" />
           </Key>
           <Property Name="trn_idx" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="f_code" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="date" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="amount" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
-          <Property Name="total_price" Type="Decimal" Precision="53" Scale="0" Nullable="false" />
+          <Property Name="f_code" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
+          <Property Name="amount" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
+          <Property Name="total_price" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
           <Property Name="deadline" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="JegoEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="BuyTrn" EntityType="Self.BuyTrn" />
-          <EntitySet Name="Food" EntityType="Self.Food" />
-          <EntitySet Name="History" EntityType="Self.History" />
-          <EntitySet Name="UseTrn" EntityType="Self.UseTrn" />
-          <EntitySet Name="Remain" EntityType="JegoModel.Remain" />
-        </EntityContainer>
         <EntityType Name="Remain">
           <Key>
             <PropertyRef Name="fh_code" />
@@ -129,7 +131,9 @@
           <Property Name="amount" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
           <Property Name="deadline" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
           <Property Name="deadline_date" Type="String" Nullable="false" MaxLength="2147483647" FixedLength="false" Unicode="true" />
-          <Property Name="remain_amount" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
+          <Property Name="extra_amount" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
+          <Property Name="buy_amount" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
+          <Property Name="use_amount" Type="Decimal" Nullable="false" Precision="53" Scale="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -140,53 +144,55 @@
           <EntitySetMapping Name="BuyTrn">
             <EntityTypeMapping TypeName="JegoModel.BuyTrn">
               <MappingFragment StoreEntitySet="BuyTrn">
-                <ScalarProperty Name="trn_idx" ColumnName="trn_idx" />
-                <ScalarProperty Name="f_code" ColumnName="f_code" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="total_price" ColumnName="total_price" />
                 <ScalarProperty Name="deadline" ColumnName="deadline" />
+                <ScalarProperty Name="total_price" ColumnName="total_price" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="f_code" ColumnName="f_code" />
+                <ScalarProperty Name="trn_idx" ColumnName="trn_idx" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Food">
             <EntityTypeMapping TypeName="JegoModel.Food">
               <MappingFragment StoreEntitySet="Food">
-                <ScalarProperty Name="f_code" ColumnName="f_code" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="unit_pirce" ColumnName="unit_pirce" />
-                <ScalarProperty Name="desc" ColumnName="desc" />
-                <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="unit" ColumnName="unit" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="unit_pirce" ColumnName="unit_pirce" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="f_code" ColumnName="f_code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="History">
             <EntityTypeMapping TypeName="JegoModel.History">
               <MappingFragment StoreEntitySet="History">
-                <ScalarProperty Name="his_idx" ColumnName="his_idx" />
-                <ScalarProperty Name="trn_idx" ColumnName="trn_idx" />
-                <ScalarProperty Name="trn_type" ColumnName="trn_type" />
                 <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="trn_type" ColumnName="trn_type" />
+                <ScalarProperty Name="trn_idx" ColumnName="trn_idx" />
+                <ScalarProperty Name="his_idx" ColumnName="his_idx" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UseTrn">
             <EntityTypeMapping TypeName="JegoModel.UseTrn">
               <MappingFragment StoreEntitySet="UseTrn">
-                <ScalarProperty Name="trn_idx" ColumnName="trn_idx" />
-                <ScalarProperty Name="f_code" ColumnName="f_code" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-                <ScalarProperty Name="total_price" ColumnName="total_price" />
                 <ScalarProperty Name="deadline" ColumnName="deadline" />
+                <ScalarProperty Name="total_price" ColumnName="total_price" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="f_code" ColumnName="f_code" />
+                <ScalarProperty Name="trn_idx" ColumnName="trn_idx" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Remain">
             <EntityTypeMapping TypeName="JegoModel.Remain">
               <MappingFragment StoreEntitySet="Remain">
-                <ScalarProperty Name="remain_amount" ColumnName="remain_amount" />
+                <ScalarProperty Name="use_amount" ColumnName="use_amount" />
+                <ScalarProperty Name="buy_amount" ColumnName="buy_amount" />
+                <ScalarProperty Name="extra_amount" ColumnName="extra_amount" />
                 <ScalarProperty Name="deadline_date" ColumnName="deadline_date" />
                 <ScalarProperty Name="deadline" ColumnName="deadline" />
                 <ScalarProperty Name="amount" ColumnName="amount" />

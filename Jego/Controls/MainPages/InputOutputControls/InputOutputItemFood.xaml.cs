@@ -40,9 +40,18 @@ namespace Jego.Controls.MainPages.InputOutputControls {
         }
 
         private void changeAutoCompleteName(Food food) {
+            foodPrice_TextBox.TextChanged -= foodPrice_TextBox_TextChanged;
+            foodDesc_TextBox.TextChanged -= foodDesc_TextBox_TextChanged;
+            foodUnit_TextBox.TextChanged -= foodUnit_TextBox_TextChanged;
+            this.food.unit_pirce = food.unit_pirce;
+            this.food.desc = food.desc;
+            this.food.unit = food.unit;
             foodPrice_TextBox.Text = food.unit_pirce.ToString();
             foodDesc_TextBox.Text = food.desc;
             foodUnit_TextBox.Text = food.unit;
+            foodPrice_TextBox.TextChanged += foodPrice_TextBox_TextChanged;
+            foodDesc_TextBox.TextChanged += foodDesc_TextBox_TextChanged;
+            foodUnit_TextBox.TextChanged += foodUnit_TextBox_TextChanged;
         }
        
         public void setFood(Food food) {
@@ -153,6 +162,14 @@ namespace Jego.Controls.MainPages.InputOutputControls {
 
         public void setType(string type) {
             this.type = type;
+        }
+
+        private void foodUnit_TextBox_TextChanged(object sender, TextChangedEventArgs e) {
+            food.unit = foodUnit_TextBox.Text.Trim();
+            if (foodListener != null) {
+                food.CreateCode();
+                foodListener(food);
+            }
         }
     }
 }

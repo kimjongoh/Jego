@@ -15,7 +15,7 @@ namespace JegoDatabase.Manager {
                 using (var context = DatabaseManager.GetContext()) {
                     List<BuyTrn> buyTrns = DatabaseManager.GetTodayBuyTrns(context, dateStr);
                     List<UseTrn> useTrns = DatabaseManager.GetTodayUseTrns(context, dateStr);
-                    List<Remain> remains = DatabaseManager.GetTodayLastRemains(context, dateStr);
+                    List<Remain> remains = DatabaseManager.GetLastRemains(context, dateStr);
 
                     return new TodaysData() { buyTrns = buyTrns.Clone(), useTrns = useTrns.Clone(), remains = remains.Clone() };
                 }
@@ -116,14 +116,71 @@ namespace JegoDatabase.Manager {
                 using (var context = DatabaseManager.GetContext()) {
                     foreach (Remain remain in remains) {
                         Remain updateRemain = DatabaseManager.PutRemain(context, remain);
-                        if (updateRemain != null) {
-                            DatabaseManager.RefreshAfterRemain(context, updateRemain);
-                        }
                     }
                     DatabaseManager.SaveChanges(context);
                 }
             } catch (Exception e) {
                 Console.WriteLine(e.StackTrace);
+            }
+        }
+
+        public static List<Remain> GetNextRemains(string f_code, string date) {
+            try {
+                using (var context = DatabaseManager.GetContext()) {
+                    List<Remain> remains = DatabaseManager.GetNextRemains(context, f_code, date);
+                    return remains.Clone();
+                }
+            } catch (Exception e) {
+                return new List<Remain>();
+            }
+        }
+
+        public static Remain GetLastUseRemain(string f_code, string date) {
+            try {
+                using (var context = DatabaseManager.GetContext()) {
+                    Remain remains = DatabaseManager.GetLastUseRemain(context, f_code, date);
+                    return remains.Clone();
+                }
+            } catch (Exception e) {
+                return null;
+            }
+        }
+
+      
+
+        public static void GetExtraAmount(Remain todayRemain, Remain exRemain) {
+            try {
+                using (var context = DatabaseManager.GetContext()) {
+                    decimal currentExtraAmount = exRemain.extra_amount + todayRemain.use_amount;
+
+                    List<BuyTrn> nextRemains = DatabaseManager.GetNextBuyTrn(context, exRemain.f_code, exRemain.deadline_date);
+                    foreach (BuyTrn searchBuyTrn in nextRemains) {
+                        if (searchBuyTrn.amount > 0) {
+                            currentExtraAmount = searchBuyTrn.amount + currentExtraAmount;
+                            if (currentExtraAmount > 0) {
+                                todayRemain.deadline = searchBuyTrn.deadline;
+                                todayRemain.deadline_date = searchBuyTrn.date;
+                                todayRemain.extra_amount = currentExtraAmount;
+                                return;
+                            }
+                        }
+                    }
+                    currentExtraAmount = todayRemain.buy_amount + currentExtraAmount;
+                    todayRemain.deadline_date = todayRemain.date;
+                    todayRemain.extra_amount = currentExtraAmount;
+                }
+            } catch (Exception e) {
+                
+            }
+        }
+
+        public static Remain GetFirstBuyRemain(string f_code) {
+            try {
+                using (var context = DatabaseManager.GetContext()) {
+                    return DatabaseManager.GetFirstBuyRemain(context, f_code);
+                }
+            } catch (Exception e) {
+                return null;
             }
         }
     }

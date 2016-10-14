@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Jego.FSM.Models {
-    public class DayUpdateData : IFSMChangeDateParam {
+    public class DayUpdateData {
         private List<DayFoodModel> dayModels;
         private List<Remain> remains;
 

@@ -10,5 +10,7 @@ namespace Jego.FSM.Models {
         public Food food { get; set; }
         public Remain remain { get; set; }
 
+        public Remain todayRemain { get; set; }
+
     }
 }
