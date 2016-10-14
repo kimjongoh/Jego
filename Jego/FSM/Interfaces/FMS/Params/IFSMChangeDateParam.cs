@@ -1,4 +1,5 @@
 ﻿using ExcelTemplateLib.DataModels;
+using Jego.FSM.Models;
 using JegoDatabase.Entities;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using System.Text;
 
 namespace Jego.FSM.Interfaces.FMS.Params {
     public interface IFSMChangeDateParam {
-        List<DayFoodModel> getDayModels();
-        List<Remain> getRemains();
+        List<FoodBuyUse> GetFoodBuyUse();
     }
 }
